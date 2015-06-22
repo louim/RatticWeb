@@ -12,7 +12,7 @@
 <head>
   <title>{% block title %}{% trans "Rattic" %}{% endblock %}</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="rattic_url_root" content="{% url_root %}" />
   {% if user.is_staff and USE_LDAP_GROUPS %}
     <meta name="rattic_user_staff" content="true" />
@@ -24,34 +24,30 @@
   <!-- <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen"> -->
   <link href="{% static "materialize/css/materialize.min.css" %}" rel="stylesheet" media="screen">
   <link href="{% static "selectize/0.12.1/css/selectize.css" %}" rel="stylesheet" media="screen">
-  <link href="{% static "selectize/0.12.1/css/selectize.bootstrap2.css" %}" rel="stylesheet" media="screen">
-  <link href="{% static "rattic/css/base.css" %}" rel="stylesheet" media="screen">
-  <link href="{% static "rattic/css/icons.css" %}" rel="stylesheet" media="screen">
+  <!-- <link href="{% static "selectize/0.12.1/css/selectize.bootstrap2.css" %}" rel="stylesheet" media="screen"> -->
+  <!-- <link href="{% static "rattic/css/base.css" %}" rel="stylesheet" media="screen"> -->
+  <!-- <link href="{% static "rattic/css/icons.css" %}" rel="stylesheet" media="screen"> -->
   <script src="{% static "modernizr/2.8.3/modernizr.js" %}" ></script>
   <link href="{% static "favicon_new.ico" %}" rel="shortcut icon">
 </head>
 <body>
-<div id="wrap">
-    <div class="container-fluid">
-         {% include "navbar.html" %}
-         <div class="row-fluid">
-              <div class="span2 hidden-phone">
-                  {% include "sidebar.html" %}
-              </div>
-              {% block self_span_content %}
-                  <div class="span10">
-                      {% block content %}{% endblock %}
-                  </div>
-              {% endblock %}
-         </div>
-         <div id="push"></div>
-    </div>
-</div>
-<div id="footer">
-  <div class="container-fluid">
-      <p class="muted credit">{% blocktrans %}Password management powered by{% endblocktrans %} <a href="http://rattic.org/">{% trans "RatticDB" %}</a><span class='hidden-phone'>, {% trans "built by" %} <a href="https://twitter.com/smarthall">@smarthall</a> {% trans "and" %} <a href="https://twitter.com/zemmiph0bia">@zemmiph0bia</a>. | <a href="https://github.com/tildaslash/RatticWeb/issues/new">{% trans "Report an issue" %}</a> | <a href="https://twitter.com/RatticDB">{% trans "Contact Us" %}</a></span></p>
+<div class="row">
+  {% include "navbar.html" %}
+  <div class="col m3 hide-on-small-only">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col s12 m9">
+    {% block self_span_content %}
+      {% block content %}{% endblock %}
+    {% endblock %}
   </div>
 </div>
+<footer class="page-footer">
+  <div class="footer-copyright">
+    <div class="container">
+        {% blocktrans %}Password management powered by{% endblocktrans %} <a class="grey-text text-lighten-4" href="http://rattic.org/">{% trans "RatticDB" %}</a>
+    </div>
+</footer>
 <script type="application/javascript" src="{% static "jquery/js/jquery-1.11.3.min.js" %}"></script>
 <!-- <script type="application/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script> -->
 <script type="application/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>

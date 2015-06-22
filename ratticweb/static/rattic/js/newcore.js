@@ -722,6 +722,9 @@ $(document).ready(function () {
   $('.rattic-icon').css('background-image',
     'url(' + RATTIC.page.getStaticURL('rattic/img/sprite.png') + ')');
 
+  // Mobile Nav
+  $('.rattic-side-nav').sideNav();
+
   // Search boxes
   RATTIC.controls.searchForm($('.rattic-cred-search'));
 
